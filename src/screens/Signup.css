@@ -1,0 +1,73 @@
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.animated {
+    animation-duration: 0.75s;
+    animation-fill-mode: both;
+}
+
+.bounceIn {
+    animation-name: bounceIn;
+}
+
+.form-check {
+    margin-bottom: 10px; /* Adjust the value as needed */
+    margin-top: 5px;
+}
+
+.form-check-label {
+    margin-left: 5px; /* Optional: To add some space between the checkbox and the label */
+}
+/* Signup.css */
+/* Add your custom styles here */
+
+/* Styles for text fields */
+.form-outline {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.form-outline input.form-control {
+    background-color: #416D19;
+    color: white;
+    border: 1px solid #ccc; /* Add border color */
+}
+
+.form-outline input.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+
+.form-outline label.form-label {
+    position: absolute;
+    top: 0.5rem;
+    left: 16px;
+    color: white;
+    font-size: 1rem;
+    opacity: 0.6;
+    transition: top 0.2s ease, opacity 0.2s ease, color 0.2s ease;
+    pointer-events: none;
+}
+
+.form-outline input.form-control:focus ~ label.form-label,
+.form-outline input.form-control:not(:placeholder-shown) ~ label.form-label {
+    top: -0.5rem;
+    left: 12px;
+    font-size: 0.75rem;
+    opacity: 1;
+    color: #80bdff;
+}
