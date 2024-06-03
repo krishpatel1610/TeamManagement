@@ -1,0 +1,134 @@
+[
+    {
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "contact": 9876543210,
+        "password": "StrongPassword123!",
+        "technologies": "Node.js, Express.js, PHP",
+        "skills": "JavaScript, HTML, CSS, React.js",
+        "link": "https://www.linkedin.com/in/johndoe",
+        "Education": {
+            "collage_name": "ABC University",
+            "join_date": "2015-08-20",
+            "leave_date": "2019-05-15",
+            "description": "Bachelor of Technology in Computer Science",
+            "course_type": "B.Tech"
+        },
+        "Experience": {
+            "company_name": "Tech Innovators Inc.",
+            "join_date": "2019-06-01",
+            "resine_date": "2022-12-01",
+            "post_description": "Worked as a full-stack developer focusing on developing and maintaining web applications using Node.js, React.js, and Express.js."
+        }
+    },
+    {
+        "name": "Jane Smith",
+        "email": "jane.smith@example.com",
+        "contact": 9123456789,
+        "password": "JanePassword2024!",
+        "technologies": "PHP, Node.js",
+        "skills": "PHP, HTML, CSS, React.js",
+        "link": "https://www.linkedin.com/in/janesmith",
+        "Education": {
+            "collage_name": "XYZ Institute of Technology",
+            "join_date": "2014-09-15",
+            "leave_date": "2018-06-10",
+            "description": "Bachelor of Computer Applications",
+            "course_type": "BCA"
+        },
+        "Experience": {
+            "company_name": "Innovate Solutions",
+            "join_date": "2018-07-01",
+            "resine_date": "2021-11-30",
+            "post_description": "Served as a backend developer, managing database integrations and server-side logic using PHP."
+        }
+    },
+    {
+        "name": "Alice Johnson",
+        "email": "alice.johnson@example.com",
+        "contact": 9988776655,
+        "password": "AliceSecure2024!",
+        "technologies": "Node.js, Express.js",
+        "skills": "JavaScript, HTML, CSS, React.js",
+        "link": "https://www.linkedin.com/in/alicejohnson",
+        "Education": {
+            "collage_name": "LMN University",
+            "join_date": "2016-07-10",
+            "leave_date": "2020-05-20",
+            "description": "Bachelor of Technology in Software Engineering",
+            "course_type": "B.Tech"
+        },
+        "Experience": {
+            "company_name": "NextGen Technologies",
+            "join_date": "2020-08-01",
+            "resine_date": "Present",
+            "post_description": "Currently working as a frontend developer, focusing on building responsive web applications using React.js and Redux."
+        }
+    },
+    {
+        "name": "Michael Brown",
+        "email": "michael.brown@example.com",
+        "contact": 9871234567,
+        "password": "Michael2024!",
+        "technologies": "Node.js, PHP",
+        "skills": "HTML, CSS, JavaScript, Flutter",
+        "link": "https://www.linkedin.com/in/michaelbrown",
+        "Education": {
+            "collage_name": "DEF College",
+            "join_date": "2013-08-12",
+            "leave_date": "2017-05-25",
+            "description": "Bachelor of Technology in Information Technology",
+            "course_type": "B.Tech"
+        },
+        "Experience": {
+            "company_name": "Creative Minds Ltd.",
+            "join_date": "2017-06-15",
+            "resine_date": "2021-03-31",
+            "post_description": "Worked as a backend developer, focusing on developing server-side logic using Node.js and PHP."
+        }
+    },
+    {
+        "name": "Emily Clark",
+        "email": "emily.clark@example.com",
+        "contact": 9198765432,
+        "password": "EmilySecure2024!",
+        "technologies": "PHP, Node.js",
+        "skills": "HTML, CSS, JavaScript, React.js",
+        "link": "https://www.linkedin.com/in/emilyclark",
+        "Education": {
+            "collage_name": "GHI Institute of Technology",
+            "join_date": "2012-09-20",
+            "leave_date": "2016-06-10",
+            "description": "Bachelor of Computer Applications",
+            "course_type": "BCA"
+        },
+        "Experience": {
+            "company_name": "Future Tech Corp",
+            "join_date": "2016-07-01",
+            "resine_date": "2020-12-31",
+            "post_description": "Worked as a frontend developer, creating interactive user interfaces using React.js and JavaScript."
+        }
+    },
+    {
+        "name": "Robert Martinez",
+        "email": "robert.martinez@example.com",
+        "contact": 9182736455,
+        "password": "Robert2024!",
+        "technologies": "Express.js, Node.js",
+        "skills": "HTML, CSS, JavaScript, Flutter",
+        "link": "https://www.linkedin.com/in/robertmartinez",
+        "Education": {
+            "collage_name": "JKL University",
+            "join_date": "2011-07-15",
+            "leave_date": "2015-05-20",
+            "description": "Master of Computer Applications",
+            "course_type": "MCA"
+        },
+        "Experience": {
+            "company_name": "Tech Pioneers",
+            "join_date": "2015-08-01",
+            "resine_date": "2022-01-31",
+            "post_description": "Worked as a full-stack developer, handling both backend and frontend technologies to build comprehensive web solutions."
+        }
+    }
+]

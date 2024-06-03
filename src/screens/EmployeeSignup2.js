@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const EmployeeSignup2 = () => {
     const [formData, setFormData] = useState([
@@ -28,11 +29,16 @@ const EmployeeSignup2 = () => {
             courseType: ''
         }]);
     };
+    
+    let navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         // Form submission logic here
-        console.log(formData);
+        const Data = formData; 
+        global.fData = [...global.fData,Data];
+        console.log(global.fData);
+        navigate('/EmployeeSignup3');
     };
 
     return (
@@ -40,7 +46,7 @@ const EmployeeSignup2 = () => {
             <section style={{ marginBottom: '5rem', height: 'auto', backgroundColor: 'dark' }}>
                 <div className="container h-custom mt-5 text-dark rounded-3 animated bounceIn" style={{ borderRadius: '25px', backgroundColor: '#A1DD70', padding: '2rem' }}>
                     <h1 style={{ textAlign: 'center', color: '#333' }}>Employee Signup</h1>
-                    <form onSubmit={handleSubmit}>
+                    <form>
                         {formData.map((data, index) => (
                             <div key={index} className="form-container" style={{ marginBottom: '20px', border: '1px solid #ddd', padding: '10px', borderRadius: '5px' }}>
                                 <h2 style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '10px', textAlign: 'left' }}>Education</h2>
@@ -77,7 +83,7 @@ const EmployeeSignup2 = () => {
                                 <button type="button" onClick={handleAddEducation} style={{ padding: '10px', border: 'none',  borderRadius: '5px', cursor: 'pointer', width: '100%',backgroundColor: '#416D19', color: 'white' }}>Add Education</button>
                             </div>
                             <div style={{ flex: '1', marginLeft: '5px' }}>
-                                <Link type="submit" className="btn btn-primary btn-block" style={{ padding: '10px', border: 'none', backgroundColor: '#416D19', color: 'white', borderRadius: '5px', cursor: 'pointer', width: '100%' }} to="/EmployeeSignup3">Add Experience</Link>
+                                <Link type="submit" className="btn btn-primary btn-block" onClick={handleSubmit} style={{ padding: '10px', border: 'none', backgroundColor: '#416D19', color: 'white', borderRadius: '5px', cursor: 'pointer', width: '100%' }} to="/EmployeeSignup3">Add Experience</Link>
                             </div>
                         </div>
                         <p className='text-center mt-3'> 2 of 3</p>

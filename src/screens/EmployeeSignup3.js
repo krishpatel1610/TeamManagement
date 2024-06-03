@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const EmployeeSignup3 = () => {
     const [formData, setFormData] = useState([
         {
-            collegeName: '',
+            companyName: '',
             joinDate: '',
-            leaveDate: '',
-            description: '',
-            courseType: ''
+            resineDate: '',
+            positionDescription: ''
         }
     ]);
 
@@ -20,18 +20,37 @@ const EmployeeSignup3 = () => {
 
     const handleAddEducation = () => {
         setFormData([...formData, {
-            collegeName: '',
+            companyName: '',
             joinDate: '',
-            leaveDate: '',
-            description: '',
-            courseType: ''
+            resineDate: '',
+            positionDescription: ''
         }]);
     };
 
-    const handleSubmit = (e) => {
+    // let navigate = useNavigate();
+
+    const handleSubmit = async(e) => {
         e.preventDefault();
         // Form submission logic here
-        console.log(formData);
+        const Data = formData; 
+        global.fData = [...global.fData,Data];
+        console.log(global.fData);
+        // const response = await fetch("http://localhost:5000/api/createemployee", {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({})
+        // });
+        // const json = await response.json();
+        // console.log(json);
+        // if (!json.success) {
+        //     alert("Enter valid data!!");
+        // }
+        // if (json.success) {
+        //     // navigate('/');
+        // }
+
     };
 
     return (
@@ -39,7 +58,7 @@ const EmployeeSignup3 = () => {
             <section style={{ marginBottom: '5rem', height: 'auto', backgroundColor: 'dark' }}>
                 <div className="container h-custom mt-5 text-dark rounded-3 animated bounceIn" style={{ borderRadius: '25px', backgroundColor: '#A1DD70', padding: '2rem' }}>
                     <h1 style={{ textAlign: 'center', color: '#333' }}>Employee Signup</h1>
-                    <form onSubmit={handleSubmit}>
+                    <form>
                         {formData.map((data, index) => (
                             <div key={index} className="form-container" style={{ marginBottom: '20px', border: '1px solid #ddd', padding: '10px', borderRadius: '5px' }}>
                                 <h2 style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '10px', textAlign: 'left' }}>Experience</h2>
@@ -67,7 +86,7 @@ const EmployeeSignup3 = () => {
                                 <button type="button" onClick={handleAddEducation} style={{ padding: '10px', border: 'none',  borderRadius: '5px', cursor: 'pointer', width: '100%',backgroundColor: '#416D19', color: 'white' }}>Add Experience</button>
                             </div>
                             <div style={{ flex: '1', marginLeft: '5px' }}>
-                                <button type="button"  style={{ padding: '10px', border: 'none',  borderRadius: '5px', cursor: 'pointer', width: '100%',backgroundColor: '#416D19', color: 'white' }}>Submit</button>
+                                <button type="button" onClick={handleSubmit} style={{ padding: '10px', border: 'none',  borderRadius: '5px', cursor: 'pointer', width: '100%',backgroundColor: '#416D19', color: 'white' }}>Submit</button>
                             </div>
                         </div>
                         <p className='text-center mt-3'> 3 of 3</p>

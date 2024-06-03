@@ -1,0 +1,74 @@
+[
+    {
+        "company_name": "Tech Innovators Inc.",
+        "director_name": "Jane Doe",
+        "email": "jane.doe@techinnovators.com",
+        "password": "SecurePassword123!",
+        "description": "Tech Innovators Inc. is a leading firm specializing in cutting-edge technology solutions and services.",
+        "technologies": "React.js, Node.js, Flutter",
+        "number_of_projects": "100-200",
+        "number_of_employees": "200-300",
+        "city": "Pune",
+        "location": "7890 Hinjewadi Road, Pune, MH"
+    },
+    {
+        "company_name": "Innovate Solutions",
+        "director_name": "John Smith",
+        "email": "john.smith@innovatesolutions.com",
+        "password": "InnovateSecure2024!",
+        "description": "Innovate Solutions focuses on providing innovative tech solutions for businesses worldwide.",
+        "technologies": "PHP, Express.js",
+        "number_of_projects": "0-100",
+        "number_of_employees": "100-200",
+        "city": "Ahmedabad",
+        "location": "5678 SG Highway, Ahmedabad, GJ"
+    },
+    {
+        "company_name": "NextGen Technologies",
+        "director_name": "Alice Johnson",
+        "email": "alice.johnson@nextgen.com",
+        "password": "NextGenTech2024!",
+        "description": "NextGen Technologies is dedicated to pioneering advancements in software development.",
+        "technologies": "Node.js, Flutter",
+        "number_of_projects": "200-300",
+        "number_of_employees": "300-400",
+        "city": "Gandhinagar",
+        "location": "123 Tech Park, Gandhinagar, GJ"
+    },
+    {
+        "company_name": "Future Tech Corp",
+        "director_name": "Michael Brown",
+        "email": "michael.brown@futuretech.com",
+        "password": "FutureTech2024!",
+        "description": "Future Tech Corp specializes in developing futuristic technology solutions for various industries.",
+        "technologies": "React.js, Express.js",
+        "number_of_projects": "300-400",
+        "number_of_employees": "400-500",
+        "city": "Delhi",
+        "location": "345 Business Street, Delhi, DL"
+    },
+    {
+        "company_name": "Creative Minds Ltd.",
+        "director_name": "Emma Wilson",
+        "email": "emma.wilson@creativeminds.com",
+        "password": "CreativeMinds2024!",
+        "description": "Creative Minds Ltd. focuses on creating innovative software applications and solutions.",
+        "technologies": "PHP, Node.js",
+        "number_of_projects": "100-200",
+        "number_of_employees": "0-100",
+        "city": "Ahmedabad",
+        "location": "6789 Riverfront Road, Ahmedabad, GJ"
+    },
+    {
+        "company_name": "Tech Pioneers",
+        "director_name": "Robert Martinez",
+        "email": "robert.martinez@techpioneers.com",
+        "password": "TechPioneers2024!",
+        "description": "Tech Pioneers aims to lead the market in cutting-edge technology and software solutions.",
+        "technologies": "React.js, Flutter",
+        "number_of_projects": "400-500",
+        "number_of_employees": "500+",
+        "city": "Pune",
+        "location": "9101 Koregaon Park, Pune, MH"
+    }
+]

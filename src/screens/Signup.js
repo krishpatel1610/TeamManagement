@@ -4,13 +4,15 @@ import './Signup.css'; // Import the CSS file for animations and styling
 
 const Signup = () => {
     const [formData, setFormData] = useState({
-        name: '',
-        directorName: '',
+        company_name: '',
+        director_name: '',
+        email: '',
+        password: '',
         description: '',
         technologies: [],
-        numProjects: '',
-        numEmployees: '',
-        city: '',
+        number_of_projects: '0-100', // Setting default value
+        number_of_employees: '0-100', // Setting default value
+        city: 'Ahmedabad', // Setting default value
         location: ''
     });
 
@@ -33,7 +35,7 @@ const Signup = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("http://localhost:5000/api/registercompany", {
+        const response = await fetch("http://localhost:5000/api/createcompany", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -63,11 +65,21 @@ const Signup = () => {
                             <div className="row mb-2 mt-2">
                                 <div className="col">
                                     <label htmlFor="name">Company Name</label>
-                                    <input type="text" className="form-control" style={{ backgroundColor: "#416D19", color: "white" }} id="name" name="name" value={formData.name} onChange={handleChange} required />
+                                    <input type="text" className="form-control" style={{ backgroundColor: "#416D19", color: "white" }} id="company_name" name="company_name" value={formData.company_name} onChange={handleChange} required />
                                 </div>
                                 <div className="col">
                                     <label htmlFor="directorName">Director Name</label>
-                                    <input type="text" className="form-control"  style={{ backgroundColor: "#416D19", color: "white" }} id="directorName" name="directorName" value={formData.directorName} onChange={handleChange} required />
+                                    <input type="text" className="form-control"  style={{ backgroundColor: "#416D19", color: "white" }} id="director_name" name="director_name" value={formData.director_name} onChange={handleChange} required />
+                                </div>
+                            </div>
+                            <div className="row mb-2 mt-2">
+                                <div className="col">
+                                    <label htmlFor="email">Email</label>
+                                    <input type="text" className="form-control" style={{ backgroundColor: "#416D19", color: "white" }} id="email" name="email" value={formData.email} onChange={handleChange} required />
+                                </div>
+                                <div className="col">
+                                    <label htmlFor="password">Password</label>
+                                    <input type="password" className="form-control"  style={{ backgroundColor: "#416D19", color: "white" }} id="password" name="password" value={formData.password} onChange={handleChange} required />
                                 </div>
                             </div>
                             <div className="form-group mb-2">
@@ -82,15 +94,15 @@ const Signup = () => {
                                         <label className="form-check-label"  htmlFor="tech1">PHP</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" style={{ backgroundColor: "#416D19", color: "white" }} type="checkbox" id="tech2" name="technologies" value="React.js" onChange={handleChange} />
+                                        <input className="form-check-input" style={{ backgroundColor: "#416D19", color: "white" }} type="checkbox" id="tech2" name="technologies" value="React JS" onChange={handleChange} />
                                         <label className="form-check-label"  htmlFor="tech2">React.js</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" style={{ backgroundColor: "#416D19", color: "white" }} type="checkbox" id="tech3" name="technologies" value="Node.js" onChange={handleChange} />
+                                        <input className="form-check-input" style={{ backgroundColor: "#416D19", color: "white" }} type="checkbox" id="tech3" name="technologies" value="Node JS" onChange={handleChange} />
                                         <label className="form-check-label"  htmlFor="tech3">Node.js</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" style={{ backgroundColor: "#416D19", color: "white" }} type="checkbox" id="tech4" name="technologies" value="Express.js" onChange={handleChange} />
+                                        <input className="form-check-input" style={{ backgroundColor: "#416D19", color: "white" }} type="checkbox" id="tech4" name="technologies" value="Express JS" onChange={handleChange} />
                                         <label className="form-check-label"  htmlFor="tech4">Express.js</label>
                                     </div>
                                     <div className="form-check">
@@ -101,7 +113,7 @@ const Signup = () => {
                                 <div className="col d-flex flex-column">
                                     <div className="form-group mb-2">
                                         <label htmlFor="numProjects">Number of Projects</label>
-                                        <select className="form-control" style={{ backgroundColor: "#416D19", color: "white" }} id="numProjects" name="numProjects" value={formData.numProjects} onChange={handleChange} required>
+                                        <select className="form-control" style={{ backgroundColor: "#416D19", color: "white" }} id="number_of_projects" name="number_of_projects" value={formData.number_of_projects} onChange={handleChange} required>
                                             <option value="0-100">0-100</option>
                                             <option value="100-200">100-200</option>
                                             <option value="200-300">200-300</option>
@@ -111,7 +123,7 @@ const Signup = () => {
                                     </div>
                                     <div className="form-group mb-2">
                                         <label htmlFor="numEmployees">Number of Employees</label>
-                                        <select className="form-control" style={{ backgroundColor: "#416D19", color: "white" }} id="numEmployees" name="numEmployees" value={formData.numEmployees} onChange={handleChange} required>
+                                        <select className="form-control" style={{ backgroundColor: "#416D19", color: "white" }} id="number_of_employees" name="number_of_employees" value={formData.number_of_employees} onChange={handleChange} required>
                                             <option value="0-100">0-100</option>
                                             <option value="100-200">100-200</option>
                                             <option value="200-300">200-300</option>

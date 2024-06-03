@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const EmployeeSignup = () => {
     const [formData, setFormData] = useState({
         name: '',
         contact: '',
         email: '',
+        password: '',
+        link:'',
         technologies: [],
         skills: []
     });
@@ -30,11 +33,16 @@ const EmployeeSignup = () => {
             skills: checked ? [...prevState.skills, name] : prevState.skills.filter(skill => skill !== name)
         }));
     };
+    
+    let navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         // Add your form submission logic here
-        console.log(formData);
+        const Data = formData;
+        global.fData = [Data];
+        console.log(global.fData);
+        navigate('/EmployeeSignup2');
     };
 
     return (
@@ -48,10 +56,32 @@ const EmployeeSignup = () => {
                         <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                         <div className="signup-container">
                         <h2 className="signup-header mt-2" style={{ textAlign: 'center', marginBottom: '2rem' }}>Employee Signup</h2>
-                        <form onSubmit={handleSubmit}>
-                            <div className="form-group mb-4">
-                                <label htmlFor="name" className="form-label text-black" style={{ display: 'block', marginBottom: '0.5rem' }}>Name</label>
-                                <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required style={{ width: '100%', padding: '0.5rem', borderRadius: '0.25rem', backgroundColor: '#416D19', color: 'white', border: 'none' }} />
+                        <form>
+                            <div className="row mb-2 mt-2">
+                                <div className="col">
+                                    <label htmlFor="name">Name</label>
+                                    <input type="text" className="form-control" style={{ backgroundColor: "#416D19", color: "white" }} id="name" name="name" value={formData.name} onChange={handleChange} required />
+                                </div>
+                                <div className="col">
+                                    <label htmlFor="password">Password</label>
+                                    <input type="password" className="form-control"  style={{ backgroundColor: "#416D19", color: "white" }} id="password" name="password" value={formData.password} onChange={handleChange} required />
+                                </div>
+                            </div>
+                            <div className="row mb-2 mt-2">
+                                <div className="col">
+                                    <label htmlFor="email">Email</label>
+                                    <input type="text" className="form-control" style={{ backgroundColor: "#416D19", color: "white" }} id="email" name="email" value={formData.email} onChange={handleChange} required />
+                                </div>
+                                <div className="col">
+                                    <label htmlFor="contact">Contact</label>
+                                    <input type="text" className="form-control" style={{ backgroundColor: "#416D19", color: "white" }} id="contact" name="contact" value={formData.contact} onChange={handleChange} required />
+                                </div>
+                            </div>
+                            <div className="row mb-2 mt-2">
+                                <div className="col">
+                                    <label htmlFor="link">Social Media Link</label>
+                                    <input type="text" className="form-control" style={{ backgroundColor: "#416D19", color: "white" }} id="link" name="link" value={formData.link} onChange={handleChange} required />
+                                </div>
                             </div>
 
                             <div className="row mb-2" style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -90,7 +120,7 @@ const EmployeeSignup = () => {
 
                             <div className="row mb-2" style={{ display: 'flex', justifyContent: 'space-between' }}>
                                 <div className="col">
-                                    <Link type="button" className="btn btn-primary btn-block" style={{ width: '100%', padding: '0.5rem', backgroundColor: '#416D19', color: 'white' }} to="/EmployeeSignup2">Add Education</Link>
+                                    <Link type="button" className="btn btn-primary btn-block" onClick={handleSubmit} style={{ width: '100%', padding: '0.5rem', backgroundColor: '#416D19', color: 'white' }} to="/EmployeeSignup2">Add Education</Link>
                                 </div>
                             </div>
                             <p className='text-center mt-3'> 1 of 3</p>
