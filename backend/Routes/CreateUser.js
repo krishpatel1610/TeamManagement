@@ -44,7 +44,7 @@ router.post("/createemployee",async(req,res)=>{
         // if(!error.isEmpty()){
         //     return res.status(400).json({ error: error.array() });
         // }
-        await Employee.create({
+        const newEmployee = {
             name: req.body.name,
             email: req.body.email,
             contact: req.body.contact,
@@ -52,20 +52,11 @@ router.post("/createemployee",async(req,res)=>{
             technologies: req.body.technologies,
             skills: req.body.skills,
             link: req.body.link,
-            Education: {
-                collage_name: req.body.Education.collage_name,
-                join_date: req.body.Education.join_date,
-                leave_date: req.body.Education.leave_date,
-                description: req.body.Education.description,
-                course_type: req.body.Education.course_type
-            },
-            Experience: {
-                company_name: req.body.Experience.company_name,
-                join_date: req.body.Experience.join_date,
-                resine_date: req.body.Experience.resine_date,
-                post_description: req.body.Experience.post_description
-            }
-        });
+            Education: req.body.Education ? req.body.Education : [], // Handle potential missing data
+            Experience: req.body.Experience ? req.body.Experience : [], // Handle potential missing data
+          };
+          
+          await Employee.create(newEmployee);
         
         res.json({success:true});
     }catch(error){

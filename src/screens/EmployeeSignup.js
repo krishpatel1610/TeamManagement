@@ -10,7 +10,9 @@ const EmployeeSignup = () => {
         password: '',
         link:'',
         technologies: [],
-        skills: []
+        skills: [],
+        Education: [],
+        Experience: [],
     });
 
     const handleChange = (e) => {

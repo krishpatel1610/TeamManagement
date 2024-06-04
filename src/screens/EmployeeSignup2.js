@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const EmployeeSignup2 = () => {
-    const [formData, setFormData] = useState([
-        {
-            collegeName: '',
-            joinDate: '',
-            leaveDate: '',
+    const [formData, setFormData] = useState([{
+            collage_name: '',
+            join_date: '',
+            leave_date: '',
             description: '',
-            courseType: ''
+            course_type: ''
         }
     ]);
 
@@ -21,23 +19,23 @@ const EmployeeSignup2 = () => {
     };
 
     const handleAddEducation = () => {
-        setFormData([...formData, {
-            collegeName: '',
-            joinDate: '',
-            leaveDate: '',
-            description: '',
-            courseType: ''
-        }]);
+        setFormData([...formData,  {
+                collage_name: '',
+                join_date: '',
+                leave_date: '',
+                description: '',
+                course_type: ''
+            }
+        ]);
     };
-    
-    let navigate = useNavigate();
+
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Form submission logic here
         const Data = formData; 
-        global.fData = [...global.fData,Data];
-        console.log(global.fData);
+        global.fData[0].Education = [...global.fData[0].Education, ...Data];
+        console.log(global.fData); // You can perform further actions like sending the data to your backend here
         navigate('/EmployeeSignup3');
     };
 
@@ -50,25 +48,25 @@ const EmployeeSignup2 = () => {
                         {formData.map((data, index) => (
                             <div key={index} className="form-container" style={{ marginBottom: '20px', border: '1px solid #ddd', padding: '10px', borderRadius: '5px' }}>
                                 <h2 style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '10px', textAlign: 'left' }}>Education</h2>
-                                <label className="form-label text-black" htmlFor={`collegeName-${index}`} style={{ display: 'block', marginBottom: '5px', color: '#666' }}>College Name:</label>
-                                <input type="text" id={`collegeName-${index}`} name="collegeName" value={data.collegeName} onChange={(e) => handleChange(index, e)} required style={{ width: '100%', padding: '10px', marginBottom: '10px', border: '1px solid #ddd', borderRadius: '5px', boxSizing: 'border-box',backgroundColor: '#416D19', color: 'white' }} />
+                                <label className="form-label text-black" htmlFor={`collage_name-${index}`} style={{ display: 'block', marginBottom: '5px', color: '#666' }}>College Name:</label>
+                                <input type="text" id={`collage_name-${index}`} name="collage_name" value={data.collage_name} onChange={(e) => handleChange(index, e)} required style={{ width: '100%', padding: '10px', marginBottom: '10px', border: '1px solid #ddd', borderRadius: '5px', boxSizing: 'border-box',backgroundColor: '#416D19', color: 'white' }} />
                                 
                                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                     <div style={{ flex: '0 1 48%', marginRight: '2%' }}>
-                                        <label className="form-label text-black" htmlFor={`joinDate-${index}`} style={{ display: 'block', marginBottom: '5px', color: '#666' }}>Join Date:</label>
-                                        <input type="date" id={`joinDate-${index}`} name="joinDate" value={data.joinDate} onChange={(e) => handleChange(index, e)} required style={{ width: '100%', padding: '10px', marginBottom: '10px', border: '1px solid #ddd', borderRadius: '5px', boxSizing: 'border-box',backgroundColor: '#416D19', color: 'white' }} />
+                                        <label className="form-label text-black" htmlFor={`join_date-${index}`} style={{ display: 'block', marginBottom: '5px', color: '#666' }}>Join Date:</label>
+                                        <input type="date" id={`join_date-${index}`} name="join_date" value={data.join_date} onChange={(e) => handleChange(index, e)} required style={{ width: '100%', padding: '10px', marginBottom: '10px', border: '1px solid #ddd', borderRadius: '5px', boxSizing: 'border-box',backgroundColor: '#416D19', color: 'white' }} />
                                     </div>
                                     <div className="mx-2" style={{ flex: '0 1 48%' }}>
-                                        <label className="form-label text-black" htmlFor={`leaveDate-${index}`} style={{ display: 'block', marginBottom: '5px', color: '#666' }}>Leave Date:</label>
-                                        <input type="date" id={`leaveDate-${index}`} name="leaveDate" value={data.leaveDate} onChange={(e) => handleChange(index, e)} required style={{ width: '100%', padding: '10px', marginBottom: '10px', border: '1px solid #ddd', borderRadius: '5px', boxSizing: 'border-box',backgroundColor: '#416D19', color: 'white' }} />
+                                        <label className="form-label text-black" htmlFor={`leave_date-${index}`} style={{ display: 'block', marginBottom: '5px', color: '#666' }}>Leave Date:</label>
+                                        <input type="date" id={`leave_date-${index}`} name="leave_date" value={data.leave_date} onChange={(e) => handleChange(index, e)} required style={{ width: '100%', padding: '10px', marginBottom: '10px', border: '1px solid #ddd', borderRadius: '5px', boxSizing: 'border-box',backgroundColor: '#416D19', color: 'white' }} />
                                     </div>
                                 </div>
                                 
                                 <label className="form-label text-black" htmlFor={`description-${index}`} style={{ display: 'block', marginBottom: '5px', color: '#666' }}>Description:</label>
                                 <textarea id={`description-${index}`} name="description" value={data.description} onChange={(e) => handleChange(index, e)} required style={{ width: '100%', padding: '10px', marginBottom: '10px', border: '1px solid #ddd', borderRadius: '5px', boxSizing: 'border-box',backgroundColor: '#416D19', color: 'white' }} />
 
-                                <label className="form-label text-black" htmlFor={`courseType-${index}`} style={{ display: 'block', marginBottom: '5px', color: '#666' }}>Course Type:</label>
-                                <select id={`courseType-${index}`} name="courseType" value={data.courseType} onChange={(e) => handleChange(index, e)} required style={{ width: '100%', padding: '10px', marginBottom: '10px', border: '1px solid #ddd', borderRadius: '5px', boxSizing: 'border-box',backgroundColor: '#416D19', color: 'white' }}>
+                                <label className="form-label text-black" htmlFor={`course_type-${index}`} style={{ display: 'block', marginBottom: '5px', color: '#666' }}>Course Type:</label>
+                                <select id={`course_type-${index}`} name="course_type" value={data.course_type} onChange={(e) => handleChange(index, e)} required style={{ width: '100%', padding: '10px', marginBottom: '10px', border: '1px solid #ddd', borderRadius: '5px', boxSizing: 'border-box',backgroundColor: '#416D19', color: 'white' }}>
                                     <option value="" disabled>Select Course Type</option>
                                     <option value="B.Tech">B.Tech</option>
                                     <option value="BCA">BCA</option>
