@@ -16,11 +16,14 @@ code {
   max-height: 500px;
 }
 
-.nav-item .active {
-  border: 1px soild black;
+.navbar-nav .nav-item .btn.active {
+  border: 1px solid black;
   background-color: black;
-  color: white;  
+  color: white;
+  
 }
+
+
 
 @keyframes bounceIn {
   0% {

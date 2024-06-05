@@ -21,7 +21,7 @@ const Home = () => {
                   </h1>
                   <p>Employees are the backbone, turning vision into reality</p>
                 </div>
-                <Link to="/Login">Login</Link>
+                <Link to="/Logine">Login</Link>
                 <div className="ico-card">
                   <i className="fa fa-rebel"></i>
                 </div>

@@ -1,0 +1,10 @@
+.card a:after {
+    content: "";
+    display: inline-block;
+    height: 0.5em;
+    width: 0;
+    margin-right: -40%;
+    margin-left: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 1);
+    transition: .5s;
+}

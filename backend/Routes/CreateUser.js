@@ -65,4 +65,85 @@ router.post("/createemployee",async(req,res)=>{
     }
 })
 
+router.post("/loginEmployee",async(req,res)=>{
+    // const error = validationResult(req);
+    //     if(!error.isEmpty()){
+    //         return res.status(400).json({ error: error.array() });
+    //     }
+
+    let email = req.body.email;
+    let password = req.body.password;
+    try{
+        let userData = await Employee.findOne({email});
+        if(!userData)
+        {
+            return res.status(400).json({ error: "enter valid email!!" });
+        }
+        // const pwdCompare = await bcrypt.compare(password,userData.password); // compairing entered password with the stored encrypted password using bcrypt compare algorithms.
+        if(password !== userData.password)
+        {
+            return res.status(400).json({ error: "enter valid password!!" });
+        }
+
+        // const Data = {
+        //     user:{
+        //         id: userData.id
+        //     }
+        // }
+        // const authToken = jwt.sign(Data,jwtSecure); // Generating authToken using the user id and jwtSecure key user doesn't know about secure key.
+        res.json({success:true});
+    }catch(error){
+        console.log(error)
+        res.json({success:false});
+    }
+})
+
+router.post("/loginCompany",async(req,res)=>{
+    // const error = validationResult(req);
+    //     if(!error.isEmpty()){
+    //         return res.status(400).json({ error: error.array() });
+    //     }
+
+    let email = req.body.email;
+    let password = req.body.password;
+    try{
+        let userData = await Company.findOne({email});
+        if(!userData)
+        {
+            return res.status(400).json({ error: "enter valid email!!" });
+        }
+        // const pwdCompare = await bcrypt.compare(password,userData.password); // compairing entered password with the stored encrypted password using bcrypt compare algorithms.
+        if(password !== userData.password)
+        {
+            return res.status(400).json({ error: "enter valid password!!" });
+        }
+
+        // const Data = {
+        //     user:{
+        //         id: userData.id
+        //     }
+        // }
+        // const authToken = jwt.sign(Data,jwtSecure); // Generating authToken using the user id and jwtSecure key user doesn't know about secure key.
+        res.json({success:true});
+    }catch(error){
+        console.log(error)
+        res.json({success:false});
+    }
+})
+
+router.get('/:id', async (req, res) => {
+    const companyId = req.params.id;
+    try {
+        const companyDetails = await Company.findById(companyId);
+        if (!companyDetails) {
+            return res.status(404).json({ message: 'Company not found.' });
+        }
+        res.status(200).json(companyDetails);
+    } catch (error) {
+        console.error('Error fetching company details:', error);
+        res.status(500).json({ message: 'An error occurred while fetching company details.' });
+    }
+})
+
+
 module.exports = router;

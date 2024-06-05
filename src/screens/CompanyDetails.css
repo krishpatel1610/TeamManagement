@@ -1,0 +1,47 @@
+#sec {
+    font-family: 'Raleway', sans-serif;
+    padding: 20px 0;
+    background: #fff;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.company-info {
+    padding: 20px;
+    width: 100%;
+    background: white;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left; /* Align text to the left */
+}
+
+.company-info h2 {
+    font-size: 30px;
+    font-weight: 200;
+    color: blue;
+}
+
+.company-info p {
+    color: black;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.grey-bg {
+    background-color: white;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-card {
+    width: 900px;
+    max-width: 100%;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border-radius: 10px;
+}

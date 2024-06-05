@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 
-const Login = () => {
+const Logine = () => {
     const onChange = (event) => {
         setCredantials({ ...credantials, [event.target.name]: event.target.value })
     }
@@ -11,7 +11,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // synthetic event read once
-        const response = await fetch("http://localhost:5000/api/loginCompany", {
+        const response = await fetch("http://localhost:5000/api/loginEmployee", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const Login = () => {
                             <form onSubmit={handleSubmit}>
                                 <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-center mt-3" style={{ opacity: "0.8" }}>
                                     <p className="lead fw-normal mb-0 me-2">New User..??</p><br />
-                                    <Link to="/Signup" className='mx-2 btn btn-m btn-info rounded-pill' >Compay</Link>
+                                    <Link to="/EmployeeSignup" className='mx-2 btn btn-m btn-info rounded-pill' >Employee</Link>
                                 </div>
 
                                 <div className="divider d-flex align-items-center justify-content-center my-4">
@@ -83,4 +83,4 @@ const Login = () => {
     );
 }
 
-export default Login;
+export default Logine;
