@@ -145,5 +145,19 @@ router.get('/:id', async (req, res) => {
     }
 })
 
+router.get('/emp/:id', async (req, res) => {
+    const employeeId = req.params.id;
+    try {
+        const employeeDetails = await Employee.findById(employeeId);
+        if (!employeeDetails) {
+            return res.status(404).json({ message: 'Employee not found.' });
+        }
+        res.status(200).json(employeeDetails);
+    } catch (error) {
+        console.error('Error fetching company details:', error);
+        res.status(500).json({ message: 'An error occurred while fetching company details.' });
+    }
+})
+
 
 module.exports = router;

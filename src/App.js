@@ -8,10 +8,12 @@ import Signup from './screens/Signup.js';
 import EmployeeSignup from './screens/EmployeeSignup.js';
 import EmployeeSignup2 from './screens/EmployeeSignup2.js';
 import EmployeeSignup3 from './screens/EmployeeSignup3.js';
-import Company from './screens/Company.js';
 import Employee from './screens/Employee.js';
 import Logine from './screens/Logine.js';
 import CompanyDetail from './screens/CompanyDetails.js';
+import Company from './screens/Company.js';
+import EmployeeDetails from './screens/EmployeeDetails.js';
+
 
 function App() {
   return (
@@ -28,6 +30,7 @@ function App() {
         <Route path="/Company" element={<Company/>}/>
         <Route path="/Employee" element={<Employee/>}/> 
         <Route path="/CompanyDetails/:id" element={<CompanyDetail/>}/> 
+        <Route path="/EmployeeDetails/emp/:id" element={<EmployeeDetails/>}/> 
       </Routes>
     </Router>
     </div>

@@ -81,13 +81,13 @@ const Employee = () => {
                                     </thead>
                                     <tbody>
                                         {filteredEmployeeData.length > 0 ? filteredEmployeeData.map((employee, index) => (
-                                            <tr key={index}>
+                                            <tr key={employee._id}>
                                                 <th scope="row">{index + 1}</th>
                                                 <td>{employee.name}</td>
                                                 <td>{Array.isArray(employee.skills) ? employee.skills.join(', ') : employee.skills}</td>
                                                 <td>{Array.isArray(employee.technologies) ? employee.technologies.join(', ') : employee.technologies}</td>
                                                 <td><Link to={employee.link}>{employee.link}</Link></td>
-                                                <td><Link className='btn btn-dark text-white mt-0 mb-0 mr-3' to="/">More</Link></td>
+                                                <td><Link className='btn btn-dark text-white mt-0 mb-0 mr-3' to={`/EmployeeDetails/emp/${employee._id}`}>More</Link></td>
                                             </tr>
                                         )) : (
                                             <tr>

@@ -13,8 +13,29 @@
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start; /* Align items to the left */
     text-align: left; /* Align text to the left */
+}
+
+.company-info h2,
+.company-info h4,
+.company-info h5,
+.company-info h6 {
+    text-align: center; /* Align company name, director name, and address to the center */
+    width: 100%;
+}
+
+.company-info a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: black;
+    text-decoration: none; 
+    padding: 10px;
+    margin-left: -160px;
+    width: 100%;
+    text-align: center;
 }
 
 .company-info h2 {
@@ -40,7 +61,26 @@
 .custom-card {
     width: 900px;
     max-width: 100%;
-    padding: 20px;
+    padding: 5px; /* Reduce padding to 5px */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border-radius: 10px;
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 20px); /* Adjusted height with spacing */
+    padding: 10px; /* Add padding to the container */
+}
+
+.custom-card {
+    width: 900px; /* Fixed width */
+    max-width: 100%;
+    height: 100%; /* Full height of the container */
+    overflow-y: auto; /* Enable vertical scrolling when necessary */
+    padding: 20px; /* Add padding to the card */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background: #fff;
     border-radius: 10px;

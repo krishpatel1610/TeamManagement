@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import "./CompanyDetails.css"; // Make sure to create and include this CSS file
+import Header from "../utilities/Header";
+import Footer from "../utilities/Footer";
 
 const CompanyDetail = () => {
   const { id } = useParams();
-  const [companyData, setCompanyData] = useState([]); // Initialize as null
+  const [companyData, setCompanyData] = useState(null); // Initialize as null
 
   useEffect(() => {
     const loadCompany = async () => {
@@ -30,15 +33,19 @@ const CompanyDetail = () => {
   }
 
   return (
-    <div className="grey-bg container-fluid d-flex justify-content-center align-items-center">
-      <div className="card custom-card" style={{ height: "600px", overflowY: "auto" }}>
+    <div>
+    <div>
+      <Header/>
+    </div>
+    <div className="center-container" style={{ marginTop: '5px', marginBottom: '5px' }}>
+      <div className="card custom-card">
         <section id="minimal-statistics">
           <div className="row">
             <section id="sec" className="col-12">
               <div className="company-info">
                 <h2>{companyData.company_name}</h2>
                 <h4>{companyData.director_name}</h4>
-                <h6>{companyData.location}</h6>
+                <h6>{companyData.location}</h6><br/><br/>
                 <p>
                   <b>About Company</b>
                   <br />
@@ -139,7 +146,11 @@ const CompanyDetail = () => {
         </section>
       </div>
     </div>
-  );  
+    <div>
+      <Footer/>
+    </div>
+    </div>
+  );
 };
 
 export default CompanyDetail;
