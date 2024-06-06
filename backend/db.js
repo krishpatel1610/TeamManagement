@@ -5,21 +5,17 @@ const mongoDB = async () => {
     try {
       await mongoose.connect(url);
       console.log("Connected successfully");
-  
-      // Fetch data from the 'company' and 'employee' collection
       const company = mongoose.connection.db.collection("company");
-      const cData = await company.find({}).toArray();
-      const employee = mongoose.connection.db.collection("employee");
-      const eData = await employee.find({}).toArray();
-    //   console.log(data);
-      global.company = cData; // creating global variable for company in javascript.
-      global.employee = eData; // creating global variable for employee in javascript.
-    //   console.log(global.company);
-    //   console.log(global.employee);
-      
+        const cData = await company.find({}).toArray();
+        const employee = mongoose.connection.db.collection("employee");
+        const eData = await employee.find({}).toArray();
+        global.company = cData; // creating global variable for company in javascript.
+        global.employee = eData; // creating global variable for employee in javascript.
     } catch (error) {
       console.error("Database connection error:", error);
     }
   };
+
+  
   
   module.exports = mongoDB;

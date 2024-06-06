@@ -42,8 +42,8 @@ const EmployeeSignup = () => {
         e.preventDefault();
         // Add your form submission logic here
         const Data = formData;
-        global.fData = [Data];
-        console.log(global.fData);
+        localStorage.setItem('fData', JSON.stringify([Data]));
+        console.log(JSON.parse(localStorage.getItem('fData')));
         navigate('/EmployeeSignup2');
     };
 

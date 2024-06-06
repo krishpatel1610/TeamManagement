@@ -33,9 +33,30 @@ const EmployeeSignup2 = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const Data = formData; 
-        global.fData[0].Education = [...global.fData[0].Education, ...Data];
-        console.log(global.fData); // You can perform further actions like sending the data to your backend here
+        const Data = formData;
+
+        // Retrieve the data from local storage
+        let storedData = JSON.parse(localStorage.getItem('fData'));
+        
+        // Check if fData is null or if it doesn't have the expected structure
+        if (!storedData || !Array.isArray(storedData) || !storedData[0]) {
+            storedData = [{ Education: [] }];
+        }
+        
+        // Ensure storedData[0].Education is an array
+        if (!Array.isArray(storedData[0].Education)) {
+            storedData[0].Education = [];
+        }
+        
+        // Update the Education property with the new data
+        storedData[0].Education = [...storedData[0].Education, ...Data];
+        
+        // Store the updated data back to local storage
+        localStorage.setItem('fData', JSON.stringify(storedData));
+        
+        console.log(storedData); // You can perform further actions like sending the data to your backend here
+        
+        
         navigate('/EmployeeSignup3');
     };
 
