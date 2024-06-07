@@ -28,7 +28,7 @@ const EmployeeSchema = new Schema({
   skills: {
     type: [String],
     required: true,
-    enum: ["HTML", "CSS", "BOOTSTRAP"],
+    enum: ["HTML", "CSS", "BOOTSTRAP5"],
   },
   link: {
     type: String,

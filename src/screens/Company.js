@@ -99,7 +99,7 @@ const Company = () => {
                           <th scope="row">{index + 1}</th>
                           <td>{company.company_name}</td>
                           <td>{company.description}</td>
-                          <td>{company.address}</td>
+                          <td>{company.location}</td>
                           <td>{company.city}</td>
                           <td>
                             <button
