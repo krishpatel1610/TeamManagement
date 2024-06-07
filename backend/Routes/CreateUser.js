@@ -3,9 +3,11 @@ const router = express.Router();
 const Employee = require('../model/Employee');
 const Company = require('../model/Company');
 // const { body,validationResult } = require('express-validator');
-// const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 // const bcrypt = require("bcryptjs");
-// const jwtSecure = "Mynameiskpandyoutube!!!##"; // secure key 
+const jwtSecure = "Mynameiskpandyoutube!!!##"; // secure key 
+const verifyToken = require('../verifyToken'); // Import middleware
+
 
 router.post("/createcompany",async(req,res)=>{
     console.log(global.company);
@@ -109,13 +111,15 @@ router.post("/loginEmployee",async(req,res)=>{
             return res.status(400).json({ error: "enter valid password!!" });
         }
 
-        // const Data = {
-        //     user:{
-        //         id: userData.id
-        //     }
-        // }
-        // const authToken = jwt.sign(Data,jwtSecure); // Generating authToken using the user id and jwtSecure key user doesn't know about secure key.
-        res.json({success:true});
+        const Data = {
+            user:{
+                id: userData.id,
+                name: userData.name,
+                type: 'employee'
+            }
+        }
+        const authToken = jwt.sign(Data,jwtSecure); // Generating authToken using the user id and jwtSecure key user doesn't know about secure key.
+        res.json({success:true,authToken:authToken});
     }catch(error){
         console.log(error)
         res.json({success:false});
@@ -142,13 +146,15 @@ router.post("/loginCompany",async(req,res)=>{
             return res.status(400).json({ error: "enter valid password!!" });
         }
 
-        // const Data = {
-        //     user:{
-        //         id: userData.id
-        //     }
-        // }
-        // const authToken = jwt.sign(Data,jwtSecure); // Generating authToken using the user id and jwtSecure key user doesn't know about secure key.
-        res.json({success:true});
+        const Data = {
+            user:{
+                id: userData.id,
+                name: userData.company_name,
+                type: 'company'
+            }
+        }
+        const authToken = jwt.sign(Data,jwtSecure); // Generating authToken using the user id and jwtSecure key user doesn't know about secure key.
+        res.json({success:true,authToken:authToken});
     }catch(error){
         console.log(error)
         res.json({success:false});
@@ -179,9 +185,16 @@ router.get('/emp/:id', async (req, res) => {
         res.status(200).json(employeeDetails);
     } catch (error) {
         console.error('Error fetching company details:', error);
-        res.status(500).json({ message: 'An error occurred while fetching company details.' });
+        res.status(500).json({ message: 'An error occurred while fetching employee details.' });
     }
 })
+
+router.get('/auth/protected-route', verifyToken, async (req, res) => {
+    // Only executed if the token is valid
+    res.status(200).json({ success:true,message: 'Protected employee route accessed successfully.', user: req.user });
+});
+
+
 
 
 module.exports = router;

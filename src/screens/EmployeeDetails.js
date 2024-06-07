@@ -27,6 +27,15 @@ const EmployeeDetails = () => {
     loadCompany();
   }, [id]); // Load data when id changes
 
+  // Function to format date in dd-mm-yyyy format
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear().toString();
+    return `${day}-${month}-${year}`;
+  };
+
   // Render loading indicator if data is still being fetched
   if (!employeeData) {
     return <div>Loading...</div>;
@@ -47,7 +56,8 @@ const EmployeeDetails = () => {
               <section id="sec" className="col-12">
                 <div className="company-info">
                   <h2>{employeeData.name}</h2>
-                  <h4><a
+                  <h4>
+                    <a
                       href={employeeData.link}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -58,9 +68,9 @@ const EmployeeDetails = () => {
                         alignItems: "center"
                       }}
                     >
-                    {employeeData.link}
+                      {employeeData.link}
                     </a>
-                </h4>
+                  </h4>
                   <h5>
                     Email: {employeeData.email}
                   </h5>
@@ -79,8 +89,8 @@ const EmployeeDetails = () => {
                           <li key={index}>
                             <p><b>Collage Name: {edu.collage_name}</b></p>
                             <p>
-                              Starting Date: {edu.join_date} &nbsp; Ending
-                              Date: {edu.leave_date}
+                              Starting Date: {formatDate(edu.join_date)} &nbsp; Ending
+                              Date: {formatDate(edu.leave_date)}
                             </p>
                             <p>Course Type: {edu.course_type}</p>
                             <p>Description: {edu.description}</p>
@@ -96,8 +106,8 @@ const EmployeeDetails = () => {
                           <li key={index}>
                             <p><b>Company Name: {exp.company_name}</b></p>
                             <p>
-                              Joining Date: {exp.join_date} &nbsp; Resign Date:{" "}
-                              {exp.resine_date}
+                              Joining Date: {formatDate(exp.join_date)} &nbsp; Resign Date:{" "}
+                              {formatDate(exp.resine_date)}
                             </p>
                             <p>Description: {exp.post_description}</p>
                           </li>

@@ -3,33 +3,87 @@ import { Link, useNavigate } from 'react-router-dom';
 
 
 const Logine = () => {
-    const onChange = (event) => {
-        setCredantials({ ...credantials, [event.target.name]: event.target.value })
-    }
     const [credantials, setCredantials] = useState({ email: "", password: "" });
     let navigate = useNavigate();
 
+    const onChange = (event) => {
+        setCredantials({ ...credantials, [event.target.name]: event.target.value });
+    };
+
     const handleSubmit = async (e) => {
-        e.preventDefault(); // synthetic event read once
-        const response = await fetch("http://localhost:5000/api/loginEmployee", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email: credantials.email, password: credantials.password })
-        });
-        const json = await response.json();
-        console.log(json);
-        if (!json.success) {
-            alert("Enter valid data!!");
+        e.preventDefault(); // Prevent the default form submission behavior
+
+        try {
+            const response = await fetch("http://localhost:5000/api/loginEmployee", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: credantials.email, password: credantials.password })
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to login');
+            }
+
+            const json = await response.json();
+            console.log('Login response:', json);
+
+            if (!json.success) {
+                alert("Enter valid data!!");
+                return;
+            }
+
+            localStorage.setItem("authToken", json.authToken); // Store the generated authToken to localStorage
+            console.log('Stored authToken:', localStorage.getItem("authToken"));
+
+            // Call the handleVerify function
+            await handleVerify();
+        } catch (error) {
+            console.error('Error during login:', error);
+            alert('An error occurred while logging in.');
         }
-        if (json.success) {
-            // localStorage.setItem("authToken", json.authToken); // storing generated authToken to localStorage
-            // console.log(localStorage.getItem("authToken"));
-            alert("Login!!");
+    };
+
+    const handleVerify = async () => {
+        try {
+            const authToken = localStorage.getItem('authToken');
+            console.log('Using authToken:', authToken);
+
+            const response = await fetch("http://localhost:5000/api/auth/protected-route", {
+                method: 'GET',
+                headers: {
+                    'Authorization': `${authToken}`
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to verify');
+            }
+
+            const json = await response.json();
+            console.log('Verification response:', json);
+
+            if (!json.success) {
+                alert("Data is not verified!!");
+                return;
+            }
+
+            alert("Login successful!!");
+            localStorage.setItem("userData", JSON.stringify(json));
+            console.log(localStorage.getItem("userData"));
             navigate('/');
+
+            // Optionally update the authToken if the response contains a new one
+            if (json.authToken) {
+                localStorage.setItem("authToken", json.authToken);
+                console.log('Updated authToken:', localStorage.getItem("authToken"));
+            }
+        } catch (error) {
+            console.error('Error during verification:', error);
+            alert('An error occurred during verification.');
         }
-    }
+    };   
 
     return (
         <div className="vh-100 d-flex justify-content-center align-items-center ">

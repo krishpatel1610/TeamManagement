@@ -1,8 +1,10 @@
+
 const express = require('express');
 const mongoose = require('mongoose');
 const url = 'mongodb+srv://krishpatel1623:Krish16@teammanagement.myxik1k.mongodb.net/TeamManagement?retryWrites=true&w=majority&appName=TeamManagement';
 
 const router = express.Router();
+
 
 router.post('/getComp',async(req,res)=>{
     try {
@@ -19,5 +21,7 @@ router.post('/getComp',async(req,res)=>{
         res.send("Server error")
     }
 });
+
+
 
 module.exports = router;

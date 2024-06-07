@@ -26,10 +26,53 @@ const Login = () => {
         if (json.success) {
             // localStorage.setItem("authToken", json.authToken); // storing generated authToken to localStorage
             // console.log(localStorage.getItem("authToken"));
-            alert("Login!!");
-            navigate('/');
+            localStorage.setItem("authToken", json.authToken); // Store the generated authToken to localStorage
+            console.log('Stored authToken:', localStorage.getItem("authToken"));
+
+            // Call the handleVerify function
+            await handleVerify();
         }
     }
+
+    const handleVerify = async () => {
+        try {
+            const authToken = localStorage.getItem('authToken');
+            console.log('Using authToken:', authToken);
+
+            const response = await fetch("http://localhost:5000/api/auth/protected-route", {
+                method: 'GET',
+                headers: {
+                    'Authorization': `${authToken}`
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to verify');
+            }
+
+            const json = await response.json();
+            console.log('Verification response:', json);
+
+            if (!json.success) {
+                alert("Data is not verified!!");
+                return;
+            }
+
+            alert("Login successful!!");
+            localStorage.setItem("userData", JSON.stringify(json));
+            console.log(localStorage.getItem("userData"));
+            navigate('/');
+
+            // Optionally update the authToken if the response contains a new one
+            if (json.authToken) {
+                localStorage.setItem("authToken", json.authToken);
+                console.log('Updated authToken:', localStorage.getItem("authToken"));
+            }
+        } catch (error) {
+            console.error('Error during verification:', error);
+            alert('An error occurred during verification.');
+        }
+    };
 
     return (
         <div className="vh-100 d-flex justify-content-center align-items-center ">

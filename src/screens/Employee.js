@@ -1,13 +1,14 @@
 import { React, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Header from '../utilities/Header';
 import Footer from '../utilities/Footer';
 import "../screens/Company.css";
 
 const Employee = () => {
-
     const [employeeData, setEmployeeData] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [userData, setUserData] = useState(JSON.parse(localStorage.getItem("userData")));
+    const navigate = useNavigate();
 
     const handleSearch = (e) => {
         setSearchTerm(e.target.value);
@@ -31,6 +32,15 @@ const Employee = () => {
     useEffect(() => {
         loadCompany();
     }, []);
+
+    const handleMoreButtonClick = (employeeId) => {
+        if (!userData) {
+            alert("Please login to get details!");
+            navigate('/Employee');
+        } else {
+            navigate(`/EmployeeDetails/emp/${employeeId}`);
+        }
+    };
 
     const filteredEmployeeData = employeeData.filter(item => {
         const name = item.name ? item.name.toLowerCase() : '';
@@ -87,7 +97,13 @@ const Employee = () => {
                                                 <td>{Array.isArray(employee.skills) ? employee.skills.join(', ') : employee.skills}</td>
                                                 <td>{Array.isArray(employee.technologies) ? employee.technologies.join(', ') : employee.technologies}</td>
                                                 <td><Link to={employee.link}>{employee.link}</Link></td>
-                                                <td><Link className='btn btn-dark text-white mt-0 mb-0 mr-3' to={`/EmployeeDetails/emp/${employee._id}`}>More</Link></td>
+                                                <td>
+                                                    <button
+                                                        className='btn btn-dark text-white mt-0 mb-0 mr-3'
+                                                        onClick={() => handleMoreButtonClick(employee._id)}>
+                                                        More
+                                                    </button>
+                                                </td>
                                             </tr>
                                         )) : (
                                             <tr>

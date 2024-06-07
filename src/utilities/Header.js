@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 const Header = () => {
+  const [userData, setUserData] = useState(JSON.parse(localStorage.getItem("userData")));
+
+  useEffect(() => {
+    const storedUserData = localStorage.getItem("userData");
+    if (storedUserData) {
+      setUserData(JSON.parse(storedUserData));
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("userData");
+    setUserData(null);
+    window.location.reload();
+  };
+
   return (
     <div>
       <nav className="navbar navbar-expand-sm navbar-light bg-light">
@@ -26,16 +41,20 @@ const Header = () => {
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink className="btn" activeClassName="active" to="/Company">
-                  Companies
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="btn" activeClassName="active" to="/Employee">
-                  Employees
-                </NavLink>
-              </li>
+              {(!userData || (userData && userData.user && userData.user.user && userData.user.user.type === "company")) && (
+                <li className="nav-item">
+                  <NavLink className="btn" activeClassName="active" to="/Employee">
+                    Employees
+                  </NavLink>
+                </li>
+              )}
+              {(!userData || (userData && userData.user && userData.user.user && userData.user.user.type === "employee")) && (
+                <li className="nav-item">
+                  <NavLink className="btn" activeClassName="active" to="/Company">
+                    Companies
+                  </NavLink>
+                </li>
+              )}
               <li className="nav-item">
                 <NavLink className="btn" activeClassName="active" to="/About">
                   About us
@@ -46,6 +65,13 @@ const Header = () => {
                   Contact us
                 </NavLink>
               </li>
+              {userData && (
+                <li className="nav-item">
+                  <NavLink className="btn" style={{ backgroundColor: "black", color: "white" }} onClick={handleLogout} to="/">
+                    Logout
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </div>
         </div>
